@@ -24,8 +24,10 @@ const initialValues = {
   phNumbers: [""],
 };
 
-const onSubmit = (values) => {
+const onSubmit = (values, onSubmitProps) => {
   console.log("Form data: ", values);
+  console.log("Submit props: ", onSubmitProps)
+  onSubmitProps.setSubmitting(false)
 };
 
 // yarn add yup - validação usando Yup
@@ -173,7 +175,8 @@ function NewYoutubeForm() {
               comments:true
             })}>Visit all</button>
 
-            <button className="submit" disabled={!(formik.isValid)} type="submit">
+            {/* <button className="submit" disabled={!(formik.isValid)} type="submit"> */}
+            <button className="submit" disabled={formik.isSubmitting} type="submit">
               Submit
             </button>
           </Form>
