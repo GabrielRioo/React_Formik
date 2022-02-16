@@ -4,12 +4,22 @@ import * as Yup from "yup";
 import FormikControl from "./FormikControl";
 
 function FormikContainer() {
+  const dropdownOptions = [
+    { key: 'Select an option', value: ''},
+    { key: 'RJ', value: 'Rio de Janeiro'},
+    { key: 'SP', value: 'Sao Paulo'},
+    { key: 'MG', value: 'Minas Gerais'},
+    { key: 'ES', value: 'Espirito Santo'},
+  ]
   const initialValues = {
     email: '',
+    decription: '', 
+    selectOption: '',
   }
   const validationSchema = Yup.object({
     email: Yup.string().required('Required'),
-    description: Yup.string().required('Required')
+    description: Yup.string().required('Required'),
+    selectOption: Yup.string().required('Required'),
   })
   const onSubmit = values => console.log("Form data: ", values)
   
@@ -32,6 +42,13 @@ function FormikContainer() {
             type='text'
             label='Description'
             name='description'
+          />
+
+          <FormikControl 
+            control='select'
+            label='Estado'
+            name='selectOption'
+            options={dropdownOptions}
           />
           <button className="submit" type="submit" onClick={onSubmit}>Submit</button>
         </Form>}
