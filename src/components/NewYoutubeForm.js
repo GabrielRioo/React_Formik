@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Formik,
   Form,
@@ -16,6 +16,20 @@ const initialValues = {
   channel: "",
   comments: "",
   address: "",
+  social: {
+    facebook: "",
+    twitter: "",
+  },
+  phoneNumbers: ["", ""],
+  phNumbers: [""],
+};
+
+const savedValues = {
+  name: "Gabriel",
+  email: "Gabriel@gmail.com",
+  channel: "GabrielRio",
+  comments: "Welcome to Formik",
+  address: "endereco",
   social: {
     facebook: "",
     twitter: "",
@@ -47,13 +61,16 @@ const validateComments = (value) => {
 };
 
 function NewYoutubeForm() {
+const [formValues, setFormValues] = useState(null)
+// console.log('InitialVaues:> ', initialValues)
   return (
     <Formik
-      initialValues={initialValues}
+      initialValues={formValues || initialValues}
       validationSchema={validationSchema}
       onSubmit={onSubmit}
       validateOnChange={true}
       validateOnBlur={true}
+      enableReinitialize
       // validateOnMount
     >
       {(formik) => {
@@ -164,7 +181,7 @@ function NewYoutubeForm() {
               </FieldArray>
             </div>
 
-            <button type="button" onClick={() => formik.validateField('comments')}>Validate comments</button>
+            {/* <button type="button" onClick={() => formik.validateField('comments')}>Validate comments</button>
             <button type="button" onClick={() => formik.validateForm()}>Validate all</button>
 
             <button type="button" onClick={() => formik.setFieldTouched('comments')}>Visit comments</button>
@@ -173,9 +190,10 @@ function NewYoutubeForm() {
               email: true,
               channel: true,
               comments:true
-            })}>Visit all</button>
+            })}>Visit all</button> */}
 
             {/* <button className="submit" disabled={!(formik.isValid)} type="submit"> */}
+            <button type='button' onClick={() => setFormValues(savedValues)}>Load Saved Data</button>
             <button className="submit" disabled={formik.isSubmitting} type="submit">
               Submit
             </button>
