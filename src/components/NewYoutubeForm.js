@@ -42,6 +42,8 @@ const onSubmit = (values, onSubmitProps) => {
   console.log("Form data: ", values);
   console.log("Submit props: ", onSubmitProps)
   onSubmitProps.setSubmitting(false)
+
+  onSubmitProps.resetForm();
 };
 
 // yarn add yup - validação usando Yup
@@ -194,6 +196,7 @@ const [formValues, setFormValues] = useState(null)
 
             {/* <button className="submit" disabled={!(formik.isValid)} type="submit"> */}
             <button type='button' onClick={() => setFormValues(savedValues)}>Load Saved Data</button>
+            <button type='reset'>Reset</button>
             <button className="submit" disabled={formik.isSubmitting} type="submit">
               Submit
             </button>
