@@ -52,6 +52,7 @@ function NewYoutubeForm() {
       onSubmit={onSubmit}
       validateOnChange={true}
       validateOnBlur={true}
+      // validateOnMount
     >
       {(formik) => {
         console.log("Formik props: ", formik);
@@ -172,7 +173,7 @@ function NewYoutubeForm() {
               comments:true
             })}>Visit all</button>
 
-            <button className="submit" type="submit">
+            <button className="submit" disabled={!(formik.isValid)} type="submit">
               Submit
             </button>
           </Form>
