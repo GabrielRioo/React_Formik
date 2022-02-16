@@ -43,8 +43,7 @@ select {
   color: red;
 }
 
-button.submit {
-  margin-top: 25px;
+.submit {
   padding: 8px 20px;
   justify-content: center;
   align-items: center;
@@ -55,7 +54,7 @@ button.submit {
   transition: background-color .5s;
 }
 
-button.submit:hover {
+.submit:hover {
   background-color: rgb(225, 225, 225);
   transition: background-color .3s;
 }
