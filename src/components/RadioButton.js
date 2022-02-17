@@ -11,10 +11,10 @@ function RadioButton(props) {
       <Field name={name} {...rest}>
         {
           ({ field }) => {
-            console.log('Field:', field)
+            // console.log('Field:', field)
             return options.map(option => {
-              console.log('Option ', option)
-              console.log('Options Map ', options)
+              // console.log('Option ', option)
+              // console.log('Options Map ', options)
               return (
                 <React.Fragment key={option.key}>
                   <input 
